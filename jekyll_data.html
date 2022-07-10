@@ -1,0 +1,60 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Using Jekyll Data</h1>
+
+    <h2>Post data</h2>
+    {% for post in site.posts %}
+        <p><strong>Post title:</strong> {{post.title}} </p>
+        <p>Post date: {{post.date}} </p>
+    {% endfor %}
+    
+    <h2>Page data</h2>
+    {% for page in site.pages %}
+    {% if page.title %}
+        <p><strong>Page title:</strong> {{page.title}} </p>
+        <p>Page date: {{page.date}} </p>
+    {% endif %}
+    {% endfor %}
+    
+    <h2>Social Networks</h2>
+    <p>Twitter username: {{site.twitter_username}}</p>
+    <p>GitHub username: {{site.github_username}}</p>
+
+    <h2>Lastest post</h2>
+    {% for post in site.posts limit:1 %}
+        <p>{{post.title}}</p>
+    {% endfor %}
+    
+    <h2>All other post</h2>
+    {% for post in site.posts offset:1 %}
+        <p>{{post.title}}</p>
+    {% endfor %}
+    
+    <h2>Second post</h2>
+    {% for post in site.posts offset:1 limit:1 %}
+        <p>{{post.title}}</p>
+    {% endfor %}
+    
+    <h2>México Posts</h2>
+    {% assign mxPosts = site.posts | where: "region", "México" %}
+    {% for post in mxPosts %}
+        <p>{{post.title}}</p>
+    {% endfor %} 
+    
+    <h2>Post with links</h2>
+    {% for post in site.posts %}
+        <a href="{{ post.url | relative_url }}">{{post.title}}</a>
+        <br>
+    {% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+items:
+- title: Home
+  url: "/index.html"
+  so: 1
+  display: true
+  subitems: []
+- title: About
+  url: "/about.html"
+  so: 0
+  display: true
+  subitems:
+    - title: Contact us
+      url: /contact.html
+      so: 2
+      display: true
+    - title: Map
+      url: /map.html
+      so: 1
+      display: false
